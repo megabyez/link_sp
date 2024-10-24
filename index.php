@@ -1,11 +1,4 @@
 <?php
-// Chuyển hướng từ megabye.online sang www.megabye.online nếu cần
-if ($_SERVER['HTTP_HOST'] == 'megabye.online') {
-    header("Location: https://www.megabye.online".$_SERVER['REQUEST_URI'], true, 301);
-    exit();
-}
-
-// Giao diện HTML để nhập link
 echo '
 <html>
 <head>
