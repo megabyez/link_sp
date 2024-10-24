@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^shortlink$ https://s.shopee.vn/20dg8YXhHg?aff=4pxrPwE7wK [L,R=301]
