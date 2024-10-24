@@ -25,7 +25,7 @@ if (isset($_GET['link'])) {
             <div class="row">
                 <div class="col-md-6">
                     <h4>Chuyển đổi đoạn văn chứa link</h4>
-                    <form id="convertForm" method="get" accept-charset="utf-8">
+                    <form id="convertForm" method="get" action="">
                         <div class="form-group">
                             <label for="text">Nhập đoạn văn của bạn:</label>
                             <textarea class="form-control" id="text" name="text" rows="4" placeholder="Nhập đoạn văn" required></textarea>
