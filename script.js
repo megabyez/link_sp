@@ -7,7 +7,8 @@ $(document).ready(function(){
         var affCode = '4pxrPwE7wK'; // Mã aff của bạn
 
         var convertedText = text.replace(urlPattern, function(url) {
-            return `https://megabye.online?link=${url.split('https://s.shopee.vn/')[1]}`;
+            var shortLink = url.split('https://s.shopee.vn/')[1];
+            return `https://megabye.online/redirect.php?link=${shortLink}&aff_code=${affCode}`;
         });
 
         $('#result').html('<p>' + convertedText + '</p><button class="btn btn-secondary mt-2" onclick="copyToClipboard()">Sao chép</button>');
