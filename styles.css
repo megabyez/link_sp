@@ -1,46 +1,51 @@
-/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
 
-/* Đảm bảo rằng form và nút bấm có khoảng cách hợp lý */
-.container-fluid {
-    max-width: 960px;
+.container {
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-h3, h4 {
+h1 {
+    text-align: center;
+}
+
+form {
     margin-bottom: 20px;
 }
 
-textarea {
-    resize: none;
-}
-
-#result {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    border: 1px solid transparent;
-}
-
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}
-
-.alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 button {
-    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p#result a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+p#result a:hover {
+    text-decoration: underline;
 }
