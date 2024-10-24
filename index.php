@@ -1,8 +1,21 @@
 <?php
+header('Content-Type: text/html; charset=utf-8'); // Đảm bảo nội dung trả về là HTML
+
 if (isset($_GET['link'])) {
     $link = $_GET['link'];
-    header("Location: https://s.shopee.vn/" . $link . "?aff=4pxrPwE7wK");
+    $aff_code = '4pxrPwE7wK'; // Mã aff của bạn
+
+    // Tạo link aff từ key
+    $aff_link = 'https://s.shopee.vn/' . $link . '?aff=' . $aff_code;
+
+    // Sử dụng dịch vụ rút gọn link TinyURL
+    $shortened_link = file_get_contents('https://tinyurl.com/api-create.php?url=' . urlencode($aff_link));
+
+    // Chuyển hướng đến link rút gọn
+    header('Location: ' . $shortened_link);
     exit;
+} else {
+    echo "<div class='alert alert-danger'>Hãy nhập link của bạn!</div>";
 }
 ?>
 <!DOCTYPE html>
@@ -25,7 +38,7 @@ if (isset($_GET['link'])) {
             <div class="row">
                 <div class="col-md-6">
                     <h4>Chuyển đổi đoạn văn chứa link</h4>
-                    <form id="convertForm" method="get" action="">
+                    <form id="convertForm" method="get" accept-charset="utf-8">
                         <div class="form-group">
                             <label for="text">Nhập đoạn văn của bạn:</label>
                             <textarea class="form-control" id="text" name="text" rows="4" placeholder="Nhập đoạn văn" required></textarea>
