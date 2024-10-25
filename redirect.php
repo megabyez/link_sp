@@ -7,8 +7,7 @@ if (isset($_GET['code'])) {
     $code = $_GET['code']; // Lấy mã rút gọn từ URL
 
     // Tạo URL Shopee gốc dựa trên mã rút gọn
-    // Đảm bảo rằng mã rút gọn đang hoạt động và bạn đã định nghĩa nó trong hệ thống của bạn
-    $original_url = "https://s.shopee.vn/$code"; // Sử dụng đúng định dạng URL Shopee
+    $original_url = "https://vn.shp.ee/$code"; // Đảm bảo URL này là chính xác
 
     // Thêm mã affiliate vào URL
     $separator = (strpos($original_url, '?') === false) ? '?' : '&';
