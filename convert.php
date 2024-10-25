@@ -24,14 +24,14 @@ if (isset($_POST['text'])) {
             // Lưu mã rút gọn và link gốc vào mảng tạm thời
             $url_mapping[$short_code] = $original_url;
 
-            // Trả về link ngắn gọn với domain của bạn
-            return "https://megabye.online/" . $short_code;
+            // Trả về HTML cho link ngắn gọn với nút copy
+            return "<span>https://megabye.online/" . $short_code . "</span><button class='copy-btn'>Copy</button>";
         },
         $text
     );
 
     // Hiển thị đoạn văn bản đã chuyển đổi với các link ngắn gọn
-    echo nl2br(htmlspecialchars($converted_text));  // Hiển thị đoạn văn đã được rút gọn link
+    echo nl2br($converted_text);  // Hiển thị đoạn văn đã được rút gọn link
 } else {
     echo "Vui lòng nhập đoạn văn bản.";
 }
