@@ -44,34 +44,20 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     // Hiển thị kết quả trong div #result
                     document.getElementById("result").innerHTML = xhr.responseText;
-
-                    // Thêm sự kiện click cho nút Copy
-                    addCopyEventListeners();
                 }
             };
             xhr.send("text=" + encodeURIComponent(text));
         }
 
-        // Thêm sự kiện copy vào mỗi nút copy trong kết quả
-        function addCopyEventListeners() {
-            const copyButtons = document.querySelectorAll(".copy-btn");
-            copyButtons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const link = this.previousElementSibling.textContent;
-                    copyToClipboard(link);
-                    alert("Đã copy: " + link);
-                });
-            });
-        }
-
-        // Hàm sao chép link vào clipboard
-        function copyToClipboard(text) {
+        // Hàm sao chép link vào clipboard và hiển thị thông báo
+        function copyLink(link) {
             const textarea = document.createElement("textarea");
-            textarea.value = text;
+            textarea.value = link;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand("copy");
             document.body.removeChild(textarea);
+            alert("Đã copy: " + link);
         }
     </script>
 </body>
