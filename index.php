@@ -23,18 +23,18 @@
 <body>
     <h1>Chuyển đổi link affiliate</h1>
     
-    <!-- Form không có action hoặc method để tránh tải lại trang -->
+    <!-- Form để nhập văn bản cần chuyển đổi -->
     <form id="convertForm">
         <label for="text">Nhập đoạn văn bản:</label>
         <textarea id="text" name="text" rows="10" cols="50" placeholder="Nhập đoạn văn bản có chứa các link affiliate"></textarea>
         <button type="button" onclick="convertText()">Chuyển đổi</button>
     </form>
 
-    <h2>Kết quả chuyển đổi:</h2>
+    <!-- Kết quả sẽ hiển thị ngay dưới form này -->
     <div id="result"></div>
 
     <script>
-        // Gửi yêu cầu AJAX để chuyển đổi link mà không tải lại trang
+        // Hàm chuyển đổi link mà không tải lại trang
         function convertText() {
             const text = document.getElementById("text").value;
             const xhr = new XMLHttpRequest();
@@ -42,25 +42,36 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Hiển thị kết quả trong div #result
+                    // Hiển thị kết quả trong div #result ngay dưới form
                     document.getElementById("result").innerHTML = xhr.responseText;
 
-                    // Thêm sự kiện click cho nút Copy
+                    // Thêm sự kiện copy vào nút copy
                     addCopyEventListeners();
                 }
             };
             xhr.send("text=" + encodeURIComponent(text));
         }
 
-        // Hàm sao chép link vào clipboard và hiển thị thông báo
-        function copyLink(link) {
+        // Thêm sự kiện copy cho nút copy
+        function addCopyEventListeners() {
+            const copyButtons = document.querySelectorAll(".copy-btn");
+            copyButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const link = this.previousElementSibling.textContent;
+                    copyToClipboard(link);
+                    alert("Đã copy: " + link);
+                });
+            });
+        }
+
+        // Hàm sao chép link vào clipboard
+        function copyToClipboard(text) {
             const textarea = document.createElement("textarea");
-            textarea.value = link;
+            textarea.value = text;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand("copy");
             document.body.removeChild(textarea);
-            alert("Đã copy: " + link);
         }
     </script>
 </body>
