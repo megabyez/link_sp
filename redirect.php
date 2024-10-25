@@ -2,23 +2,22 @@
 // Mã affiliate của bạn
 $aff_code = '4pxrPwE7wK';
 
-// Mảng lưu trữ mã rút gọn và link gốc
+// Bảng ánh xạ mã rút gọn và link gốc
 $url_mapping = [
-    "OEsQ" => "https://example.com/product/12345",
-    "Jnqh1" => "https://example.com/product/67890"
-    // Thêm các mã khác vào đây nếu cần
+    "5c47e" => "https://mikichan.mobi/Jnqh1",
+    // Bạn có thể thêm các mã rút gọn khác vào đây
 ];
 
 // Nhận mã rút gọn từ URL
 if (isset($_GET['code'])) {
-    $code = $_GET['code'];
+    $short_code = $_GET['code'];
 
-    // Kiểm tra xem mã rút gọn có tồn tại trong mảng không
-    if (array_key_exists($code, $url_mapping)) {
+    // Kiểm tra mã rút gọn có tồn tại trong mảng
+    if (array_key_exists($short_code, $url_mapping)) {
         // Tạo URL đầy đủ với mã affiliate
-        $redirect_url = $url_mapping[$code] . '?aff=' . $aff_code;
+        $redirect_url = $url_mapping[$short_code] . '?aff=' . $aff_code;
 
-        // Chuyển hướng đến URL gốc kèm mã affiliate
+        // Thực hiện chuyển hướng
         header("Location: $redirect_url");
         exit;
     } else {
