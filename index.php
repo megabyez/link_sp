@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi link affiliate</title>
-    <link rel="stylesheet" href="style.css"> <!-- Liên kết đến style.css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <h1>Chuyển đổi link affiliate</h1>
 
-    <!-- Form nhập link gốc -->
     <form id="convertForm" onsubmit="event.preventDefault(); convertText();">
         <label for="text">Nhập đoạn văn bản có chứa các link:</label>
         <textarea id="text" name="text" placeholder="Nhập đoạn văn bản..."></textarea>
         <button type="submit">Chuyển đổi</button>
     </form>
 
-    <!-- Kết quả hiển thị trong khung -->
     <div id="result" class="result-box" style="display: none;"></div>
 
-    <!-- Nút Copy tất cả -->
     <button id="copyAllBtn" onclick="copyAll()" style="display: none;">Copy tất cả</button>
     <p id="copyMessage" style="display: none;">Đã sao chép vào clipboard!</p>
 
