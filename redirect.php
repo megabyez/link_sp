@@ -19,7 +19,7 @@ if (isset($_GET['code'])) {
         // Tạo URL đầy đủ với mã affiliate
         $redirect_url = $url_mapping[$short_code] . '?aff=' . $aff_code;
 
-        // Trả về URL đầy đủ thay vì thực hiện chuyển hướng
+        // Trả về URL đầy đủ để JavaScript xử lý chuyển hướng
         echo $redirect_url;
     } else {
         echo "Mã rút gọn không hợp lệ.";

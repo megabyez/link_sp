@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi link affiliate</title>
-    <link rel="stylesheet" href="style.css"> <!-- Liên kết tới file CSS nếu có -->
+    <link rel="stylesheet" href="style.css"> <!-- Liên kết tới file CSS nếu cần -->
 </head>
 <body>
     <h1>Chuyển đổi link affiliate</h1>
@@ -23,24 +23,29 @@
 
     <!-- Thêm JavaScript để xử lý khi người dùng click vào link -->
     <script>
-        // Thêm sự kiện click vào tất cả các link rút gọn
-        document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' && e.target.dataset.code) {
-                e.preventDefault(); // Ngăn không cho link chuyển hướng
+        // Đợi nội dung trang được tải xong
+        document.addEventListener('DOMContentLoaded', function() {
+            // Thêm sự kiện click vào tất cả các link chứa mã code
+            document.addEventListener('click', function(e) {
+                // Kiểm tra xem mục người dùng click có phải là link chứa mã code
+                if (e.target.tagName === 'A' && e.target.dataset.code) {
+                    e.preventDefault(); // Ngăn chặn hành động mặc định của link (chuyển trang)
 
-                const code = e.target.dataset.code; // Lấy mã code từ link
-                const xhr = new XMLHttpRequest();
+                    const code = e.target.dataset.code; // Lấy mã code từ thuộc tính data
+                    const xhr = new XMLHttpRequest();
 
-                // Gửi yêu cầu Ajax tới redirect.php mà không chuyển trang
-                xhr.open('GET', 'redirect.php?code=' + code, true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Khi nhận phản hồi từ redirect.php, thực hiện chuyển hướng
-                        window.location.href = xhr.responseText; // Đặt URL được trả về từ redirect.php
-                    }
-                };
-                xhr.send();
-            }
+                    // Gửi yêu cầu Ajax tới redirect.php mà không chuyển trang
+                    xhr.open('GET', 'redirect.php?code=' + code, true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // Nhận phản hồi từ redirect.php và chuyển hướng nội bộ
+                            const responseURL = xhr.responseText;
+                            window.location.href = responseURL; // Thực hiện chuyển hướng nội bộ
+                        }
+                    };
+                    xhr.send(); // Gửi yêu cầu
+                }
+            });
         });
     </script>
 </body>
