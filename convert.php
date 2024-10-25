@@ -25,7 +25,7 @@ if (isset($_POST['text'])) {
             $url_mapping[$short_code] = $original_url;
 
             // Trả về HTML cho link ngắn gọn với nút copy
-            return "<span>https://megabye.online/" . $short_code . "</span><button class='copy-btn' onclick='copyLink(\"https://megabye.online/" . $short_code . "\")'>Copy</button>";
+            return "<span>https://megabye.online/" . $short_code . "</span><button class='copy-btn'>Copy</button>";
         },
         $text
     );
