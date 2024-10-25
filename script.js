@@ -1,7 +1,9 @@
-// Gửi yêu cầu AJAX để chuyển đổi link qua convert.php
-fetch(`/convert.php?link=${encodeURIComponent(link)}`)
-    .then(response => response.text())
-    .then(data => {
-        // Hiển thị kết quả nhận được
-        document.getElementById("result").innerHTML = data;
-    });
+// Hàm gửi link qua AJAX tới convert.php và hiển thị kết quả
+function convertLink() {
+    const url = document.getElementById("url").value;
+    fetch(`/convert.php?url=${encodeURIComponent(url)}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("result").innerHTML = data;
+        });
+}
