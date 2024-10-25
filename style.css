@@ -1,113 +1,49 @@
-/* Reset CSS để đảm bảo sự nhất quán giữa các trình duyệt */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Container styling */
-.container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #181818;
+    color: #ffffff;
     text-align: center;
+    padding: 50px;
 }
 
-/* Title styling */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+}
+
 h1 {
-    font-size: 2rem;
-    color: #4CAF50;
-    margin-bottom: 20px;
+    color: #32CD32;
 }
 
-/* Form styling */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Input field styling */
 input[type="text"] {
-    padding: 15px;
-    font-size: 1rem;
-    border: 2px solid #ddd;
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 20px;
-    transition: border-color 0.3s ease;
 }
 
-/* Input field focus effect */
-input[type="text"]:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-/* Button styling */
 button {
-    padding: 15px;
-    font-size: 1.1rem;
-    background-color: #4CAF50;
-    color: white;
+    padding: 10px 20px;
+    background-color: #32CD32;
     border: none;
     border-radius: 5px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-/* Button hover effect */
 button:hover {
-    background-color: #45a049;
+    background-color: #28a745;
 }
 
-/* Result paragraph styling */
-p#result {
-    font-size: 1.1rem;
+#convertedLink {
     margin-top: 20px;
 }
 
-/* Link styling */
-p#result a {
-    color: #1a73e8;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Link hover effect */
-p#result a:hover {
-    text-decoration: underline;
-}
-
-/* Alert message styling */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.alert-success {
-    background-color: #e7f9ed;
-    color: #2c7a3f;
-    border: 2px solid #2c7a3f;
-}
-
-.alert-danger {
-    background-color: #fcebea;
-    color: #c0392b;
-    border: 2px solid #c0392b;
+#copyMessage {
+    margin-top: 10px;
 }
