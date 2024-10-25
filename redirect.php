@@ -2,27 +2,20 @@
 // Mã affiliate của bạn
 $aff_code = '17396870089'; // Mã affiliate mới
 
-// Mảng ánh xạ mã rút gọn với link gốc
-$url_mapping = [
-    "be25e" => "https://mikichan.mobi/Jnqh1",
-    "3b2c1" => "https://mikichan.mobi/OEsQ",
-    "90ded" => "https://mikichan.mobi/UROY",
-    "25a51" => "https://mikichan.mobi/3uwX"
-];
+// Kiểm tra xem có URL gốc trong tham số hay không
+if (isset($_GET['url'])) {
+    $original_url = $_GET['url']; // Lấy link gốc từ tham số
 
-// Nhận mã rút gọn từ URL
-if (isset($_GET['code'])) {
-    $short_code = $_GET['code'];
+    // Kiểm tra xem URL đã có tham số ? hoặc chưa
+    $separator = (strpos($original_url, '?') === false) ? '?' : '&';
 
-    // Kiểm tra mã rút gọn có tồn tại không
-    if (array_key_exists($short_code, $url_mapping)) {
-        // Tạo URL đầy đủ với mã affiliate
-        $redirect_url = $url_mapping[$short_code] . '?aff=' . $aff_code;
+    // Tạo link với mã affiliate
+    $url_with_aff = $original_url . $separator . 'aff=' . $aff_code;
 
-        // Trả về URL đầy đủ để JavaScript xử lý chuyển hướng
-        echo $redirect_url;
-    } else {
-        echo "Mã rút gọn không hợp lệ.";
-    }
+    // Chuyển hướng đến link có mã affiliate
+    header("Location: " . $url_with_aff);
+    exit();
+} else {
+    echo "Không có URL gốc.";
 }
 ?>
