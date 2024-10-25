@@ -1,0 +1,7 @@
+# Bật công cụ rewrite của Apache
+RewriteEngine On
+
+# Quy tắc để viết lại URL
+# Biểu thức ([a-zA-Z0-9]{5}) dùng để nhận diện các chuỗi có 5 ký tự (chữ cái hoặc số)
+# Đây là mã rút gọn của bạn và sẽ được dùng để chuyển hướng tới redirect.php với mã đó.
+RewriteRule ^([a-zA-Z0-9]{5})$ redirect.php?code=$1 [L]
