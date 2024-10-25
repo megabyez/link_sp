@@ -1,4 +1,17 @@
-/* Thay đổi cho textarea */
+/* Định dạng cho khung kết quả */
+.result-box {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    max-height: 300px;
+    overflow-y: auto; /* Hiển thị thanh cuộn nếu nội dung quá dài */
+}
+
+/* Định dạng cho textarea */
 textarea {
     width: 100%;
     padding: 15px;
@@ -10,6 +23,7 @@ textarea {
     height: 150px;
 }
 
+/* Định dạng cho button */
 button {
     padding: 15px 20px;
     background-color: #32CD32;

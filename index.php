@@ -17,8 +17,8 @@
         <button type="submit">Chuyển đổi</button>
     </form>
 
-    <!-- Kết quả hiển thị link đã chuyển đổi -->
-    <div id="result"></div>
+    <!-- Kết quả hiển thị trong khung -->
+    <div id="result" class="result-box" style="display: none;"></div>
 
     <!-- Nút Copy tất cả -->
     <button id="copyAllBtn" onclick="copyAll()" style="display: none;">Copy tất cả</button>
@@ -37,6 +37,7 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById("result").innerHTML = data;
+                document.getElementById("result").style.display = "block"; // Hiển thị khung kết quả
                 document.getElementById("copyAllBtn").style.display = "block"; // Hiển thị nút Copy tất cả
             });
         }
