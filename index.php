@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi link affiliate</title>
-    <link rel="stylesheet" href="style.css"> <!-- Liên kết đến file CSS nếu có -->
+    <link rel="stylesheet" href="style.css"> <!-- Liên kết tới file CSS nếu có -->
 </head>
 <body>
     <h1>Chuyển đổi link affiliate</h1>
@@ -20,5 +20,28 @@
     <div id="result">
         <!-- Kết quả sẽ được hiển thị từ convert.php -->
     </div>
+
+    <!-- Thêm JavaScript để xử lý khi người dùng click vào link -->
+    <script>
+        // Thêm sự kiện click vào tất cả các link rút gọn
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.dataset.code) {
+                e.preventDefault(); // Ngăn không cho link chuyển hướng
+
+                const code = e.target.dataset.code; // Lấy mã code từ link
+                const xhr = new XMLHttpRequest();
+
+                // Gửi yêu cầu Ajax tới redirect.php mà không chuyển trang
+                xhr.open('GET', 'redirect.php?code=' + code, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Khi nhận phản hồi từ redirect.php, thực hiện chuyển hướng
+                        window.location.href = xhr.responseText; // Đặt URL được trả về từ redirect.php
+                    }
+                };
+                xhr.send();
+            }
+        });
+    </script>
 </body>
 </html>
