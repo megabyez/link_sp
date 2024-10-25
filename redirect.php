@@ -6,35 +6,16 @@ $aff_code = '17396870089'; // Mã affiliate
 if (isset($_GET['code'])) {
     $code = $_GET['code']; // Lấy mã rút gọn từ URL
 
-    // Tạo danh sách các tên miền có thể chứa mã rút gọn
-    $domains = [
-        "mikichan.mobi",
-        "anotherdomain.com",
-        "yetanotherdomain.net"
-    ];
+    // Tạo URL gốc Shopee với mã rút gọn
+    $original_url = "https://vn.shp.ee/$code";
 
-    // Lặp qua danh sách tên miền để tìm mã rút gọn hợp lệ
-    $original_url = null;
-    foreach ($domains as $domain) {
-        $temp_url = "https://$domain/$code";
-
-        // Gửi yêu cầu HEAD để kiểm tra sự tồn tại của mã rút gọn này
-        $headers = @get_headers($temp_url);
-        if ($headers && strpos($headers[0], '200')) {
-            $original_url = $temp_url;
-            break; // Tìm thấy URL hợp lệ
-        }
-    }
-
-    // Nếu không tìm thấy URL hợp lệ
-    if (!$original_url) {
-        echo "Mã rút gọn không hợp lệ.";
-        exit();
-    }
-
-    // Thêm mã affiliate và chuyển hướng
+    // Kiểm tra nếu URL đã có tham số ? hoặc chưa
     $separator = (strpos($original_url, '?') === false) ? '?' : '&';
+
+    // Tạo URL với mã affiliate
     $url_with_aff = $original_url . $separator . 'aff=' . $aff_code;
+
+    // Chuyển hướng đến link Shopee với mã affiliate
     header("Location: " . $url_with_aff);
     exit();
 } else {
