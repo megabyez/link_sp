@@ -1,4 +1,2 @@
 RewriteEngine On
-
-# Quy tắc để chuyển hướng mã rút gọn đến redirect.php
 RewriteRule ^([a-zA-Z0-9]{6})$ redirect.php?code=$1 [L]
