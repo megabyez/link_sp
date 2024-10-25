@@ -1,4 +1,4 @@
 RewriteEngine On
 
-# Quy tắc viết lại URL: ẩn phần redirect.php?code=
-RewriteRule ^([a-zA-Z0-9]{5})$ redirect.php?code=$1 [L]
+# Quy tắc để chuyển hướng mã rút gọn đến redirect.php
+RewriteRule ^([a-zA-Z0-9]{6})$ redirect.php?code=$1 [L]

@@ -1,28 +1,31 @@
 <?php
 // Mã affiliate của bạn
-$aff_code = '17396870089'; // Mã affiliate mới
+$aff_code = '17396870089';
 
-// Mảng ánh xạ mã rút gọn với link gốc
-$url_mapping = [
-    "be25e" => "https://mikichan.mobi/Jnqh1",
-    "3b2c1" => "https://mikichan.mobi/OEsQ",
-    "90ded" => "https://mikichan.mobi/UROY",
-    "25a51" => "https://mikichan.mobi/3uwX"
-];
-
-// Nhận mã rút gọn từ URL
+// Lấy mã rút gọn từ URL
 if (isset($_GET['code'])) {
     $short_code = $_GET['code'];
 
-    // Kiểm tra mã rút gọn có tồn tại không
-    if (array_key_exists($short_code, $url_mapping)) {
-        // Tạo URL đầy đủ với mã affiliate
-        $redirect_url = $url_mapping[$short_code] . '?aff=' . $aff_code;
+    // Tải mảng ánh xạ mã rút gọn từ `url_mapping.php`
+    $url_mapping = include('url_mapping.php');
 
-        // Trả về URL đầy đủ để JavaScript xử lý chuyển hướng
-        echo $redirect_url;
+    // Kiểm tra xem mã rút gọn có tồn tại không
+    if (isset($url_mapping[$short_code])) {
+        $original_url = $url_mapping[$short_code];
+
+        // Kiểm tra nếu URL đã có tham số ? hoặc chưa
+        $separator = (strpos($original_url, '?') === false) ? '?' : '&';
+
+        // Tạo URL đầy đủ với mã affiliate nhưng không hiển thị rõ ràng
+        $redirect_url = $original_url . $separator . 'aff=' . $aff_code;
+
+        // Chuyển hướng người dùng đến URL đầy đủ
+        header("Location: " . $redirect_url);
+        exit();
     } else {
         echo "Mã rút gọn không hợp lệ.";
     }
+} else {
+    echo "Không có mã rút gọn.";
 }
 ?>
