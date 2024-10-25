@@ -1,18 +1,16 @@
 <?php
-// Mã affiliate của bạn
-$aff_code = '17396870089'; // Mã affiliate
+// Mã affiliate của bạn (thêm nếu cần)
+$aff_code = '17396870089';
 
 // Kiểm tra xem có mã code trong URL không
 if (isset($_GET['code'])) {
     $code = $_GET['code']; // Lấy mã rút gọn từ URL
 
-    // Tạo URL gốc Shopee với mã rút gọn
+    // Tạo URL Shopee gốc dựa trên mã rút gọn
     $original_url = "https://vn.shp.ee/$code";
 
-    // Kiểm tra nếu URL đã có tham số ? hoặc chưa
+    // Thêm mã affiliate nếu cần
     $separator = (strpos($original_url, '?') === false) ? '?' : '&';
-
-    // Tạo URL với mã affiliate
     $url_with_aff = $original_url . $separator . 'aff=' . $aff_code;
 
     // Chuyển hướng đến link Shopee với mã affiliate
