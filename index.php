@@ -66,14 +66,14 @@
 
         // Hàm sao chép toàn bộ kết quả vào clipboard
         function copyAllText() {
-            const result = document.getElementById("result").innerText;
+            const result = document.getElementById("result").innerText; // Lấy nội dung từ div #result
             const textarea = document.createElement("textarea");
             textarea.value = result;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand("copy");
             document.body.removeChild(textarea);
-            alert("Đã copy");
+            alert("Đã copy toàn bộ kết quả!");
         }
     </script>
 </body>

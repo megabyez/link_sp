@@ -19,7 +19,7 @@ if (isset($_POST['text'])) {
             $short_code = generateShortCode($original_url);  // Tạo mã rút gọn từ URL
 
             // Trả về link ngắn gọn
-            return "<span>https://megabye.online/" . $short_code . "</span><button class='copy-btn'>Copy</button>";
+            return "<span>https://megabye.online/" . $short_code . "</span>";
         },
         $text
     );
