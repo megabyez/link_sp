@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi link affiliate</title>
-    <link rel="stylesheet" href="style.css"> <!-- Liên kết tới tệp style.css -->
+    <link rel="stylesheet" href="style.css"> <!-- Sử dụng tệp style.css -->
 </head>
 <body>
 
@@ -20,22 +20,7 @@
     <!-- Kết quả hiển thị link đã chuyển đổi -->
     <div id="result"></div>
 
-    <script>
-        function convertText() {
-            const text = document.getElementById("text").value;
-            fetch("convert.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `text=${encodeURIComponent(text)}`
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("result").innerHTML = data;
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
