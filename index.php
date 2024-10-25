@@ -23,11 +23,11 @@
 <body>
     <h1>Chuyển đổi link affiliate</h1>
     
-    <!-- Form để nhập văn bản cần chuyển đổi -->
-    <form id="convertForm">
+    <!-- Form không có action hoặc method để tránh tải lại trang -->
+    <form id="convertForm" onsubmit="event.preventDefault(); convertText();">
         <label for="text">Nhập đoạn văn bản:</label>
         <textarea id="text" name="text" rows="10" cols="50" placeholder="Nhập đoạn văn bản có chứa các link affiliate"></textarea>
-        <button type="button" onclick="convertText()">Chuyển đổi</button>
+        <button type="submit">Chuyển đổi</button>
     </form>
 
     <!-- Kết quả sẽ hiển thị ngay dưới form này -->
