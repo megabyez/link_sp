@@ -1,36 +1,15 @@
-/* Mặc định cho tất cả các thiết bị */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #181818;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-}
-
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #222;
-    border-radius: 10px;
-}
-
-h1 {
-    color: #32CD32;
-    font-size: 24px;  /* Đặt kích thước chữ lớn hơn cho tiêu đề */
-}
-
-/* Ô nhập link */
-input[type="text"], textarea {
-    width: 100%;  /* Chiếm toàn bộ chiều rộng màn hình */
-    padding: 15px;  /* Tăng kích thước padding */
-    margin: 15px 0;  /* Khoảng cách giữa các phần tử */
+/* Thay đổi cho textarea */
+textarea {
+    width: 100%;  /* Chiếm toàn bộ chiều rộng của khung */
+    padding: 15px;
+    margin: 15px 0;
     border: 2px solid #ccc;
     border-radius: 8px;
-    font-size: 18px;  /* Tăng cỡ chữ để dễ nhìn hơn */
+    font-size: 18px;  /* Tăng cỡ chữ để dễ nhìn */
+    resize: none;  /* Không cho phép người dùng thay đổi kích thước */
 }
 
-/* Nút bấm */
+/* Các thuộc tính khác vẫn giữ nguyên */
 button {
     padding: 15px 20px;
     background-color: #32CD32;
@@ -39,14 +18,13 @@ button {
     color: white;
     font-size: 18px;
     cursor: pointer;
-    width: 100%;  /* Chiếm toàn bộ chiều rộng màn hình */
+    width: 100%;
 }
 
 button:hover {
     background-color: #28a745;
 }
 
-/* Khu vực xuất link đã chuyển đổi */
 #convertedLink {
     margin-top: 20px;
 }
@@ -54,21 +32,4 @@ button:hover {
 #copyMessage {
     margin-top: 10px;
     font-size: 16px;
-}
-
-/* Thích hợp cho thiết bị nhỏ hơn 600px (điện thoại di động) */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 20px;  /* Thu nhỏ tiêu đề cho màn hình nhỏ */
-    }
-    
-    input[type="text"], textarea {
-        font-size: 16px;  /* Thu nhỏ cỡ chữ một chút để vừa với màn hình */
-        padding: 12px;    /* Điều chỉnh padding cho vừa với màn hình nhỏ */
-    }
-
-    button {
-        font-size: 16px;
-        padding: 12px;  /* Giảm kích thước nút cho điện thoại */
-    }
 }

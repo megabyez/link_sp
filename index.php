@@ -12,7 +12,8 @@
         
         <form id="linkForm" method="GET">
             <label for="link">Nhập link của bạn:</label>
-            <input type="text" id="link" name="link" placeholder="Nhập link của bạn..." required>
+            <!-- Thay đổi từ input sang textarea -->
+            <textarea id="link" name="link" rows="4" placeholder="Nhập link của bạn..." required></textarea>
             <button type="submit">Chuyển đổi</button>
         </form>
 
@@ -31,9 +32,9 @@
         fetch('convert.php?link=' + encodeURIComponent(link))
             .then(response => response.text())
             .then(data => {
-                // Hiển thị link đã chuyển đổi và nút sao chép
+                // Hiển thị link đã chuyển đổi và thay đổi sang textarea
                 document.getElementById('convertedLink').innerHTML = `
-                    <input type="text" value="${data}" id="resultLink" readonly>
+                    <textarea id="resultLink" rows="4" readonly>${data}</textarea>
                     <button onclick="copyToClipboard()">Copy Link</button>
                     <span id="copyMessage" style="display: none; color: green;">Link đã được sao chép!</span>
                 `;
