@@ -1,49 +1,31 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #181818;
-    color: #ffffff;
-    text-align: center;
-    padding: 50px;
-}
-
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #222;
-    border-radius: 10px;
-}
-
-h1 {
-    color: #32CD32;
-}
-
+/* Kích thước của ô nhập link */
 input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%;  /* Đặt chiều rộng 100% cho dễ sử dụng */
+    padding: 15px;  /* Tăng khoảng đệm */
+    margin: 15px 0;  /* Tăng khoảng cách giữa các phần tử */
+    border: 2px solid #ccc;  /* Tăng độ dày viền để dễ nhìn hơn */
+    border-radius: 8px;  /* Làm tròn các góc */
+    font-size: 18px;  /* Tăng cỡ chữ */
+}
+
+/* Kích thước của ô xuất link */
+textarea {
+    width: 100%;  /* Đặt chiều rộng 100% cho dễ thao tác */
+    padding: 15px;  /* Tăng khoảng đệm */
+    margin: 15px 0;  /* Tăng khoảng cách giữa các phần tử */
+    border: 2px solid #ccc;  /* Tăng độ dày viền */
+    border-radius: 8px;  /* Làm tròn các góc */
+    font-size: 18px;  /* Tăng cỡ chữ */
+    height: 80px;  /* Tăng chiều cao cho vùng chứa */
+    resize: none;  /* Tắt chức năng thay đổi kích thước thủ công */
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 25px;  /* Tăng kích thước nút */
     background-color: #32CD32;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     color: white;
-    font-size: 16px;
+    font-size: 18px;  /* Tăng cỡ chữ cho nút */
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #28a745;
-}
-
-#convertedLink {
-    margin-top: 20px;
-}
-
-#copyMessage {
-    margin-top: 10px;
 }
