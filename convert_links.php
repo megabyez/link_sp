@@ -52,7 +52,10 @@ foreach ($texts as $index => $text) {
 // Hàm sao chép nội dung từ textarea
 function copyToClipboard(elementId) {
     var copyText = document.getElementById(elementId);
+
+    // Chọn và sao chép nội dung của textarea
     copyText.select();
+    copyText.setSelectionRange(0, 99999); // Cho thiết bị di động
     document.execCommand("copy");
 
     // Hiển thị thông báo đã sao chép
