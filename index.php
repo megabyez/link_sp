@@ -23,8 +23,8 @@
 <body>
     <h1>Chuyển đổi link affiliate</h1>
     
-    <!-- Form gửi đoạn văn bản đến convert.php -->
-    <form id="convertForm" action="convert.php" method="POST">
+    <!-- Form không có action hoặc method để tránh tải lại trang -->
+    <form id="convertForm">
         <label for="text">Nhập đoạn văn bản:</label>
         <textarea id="text" name="text" rows="10" cols="50" placeholder="Nhập đoạn văn bản có chứa các link affiliate"></textarea>
         <button type="button" onclick="convertText()">Chuyển đổi</button>
@@ -44,6 +44,9 @@
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     // Hiển thị kết quả trong div #result
                     document.getElementById("result").innerHTML = xhr.responseText;
+
+                    // Thêm sự kiện click cho nút Copy
+                    addCopyEventListeners();
                 }
             };
             xhr.send("text=" + encodeURIComponent(text));
