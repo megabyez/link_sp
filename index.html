@@ -1,23 +1,56 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chuyển đổi link affiliate</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Affiliate Link Converter</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Chuyển đổi link affiliate</h1>
-        <form id="linkForm">
-            <label for="link">Nhập link của bạn:</label>
-            <input type="text" id="link" name="link" placeholder="Nhập link vào đây..." required>
-            <button type="submit">Chuyển đổi</button>
-        </form>
+    <h1>Welcome to my affiliate link converter!</h1>
+    
+    <form id="linkForm" method="GET">
+        <label for="link">Enter your affiliate link:</label>
+        <input type="text" id="link" name="link" placeholder="Nhập link của bạn..." required>
+        <button type="submit">Convert Link</button>
+    </form>
 
-        <p id="result"></p>
-    </div>
+    <p id="convertedLink"></p> <!-- Hiển thị link đã chuyển đổi -->
 
-    <script src="script.js"></script>
+    <script>
+    // Xử lý form submit
+    document.getElementById('linkForm').onsubmit = function(event) {
+        event.preventDefault();  // Ngăn form tải lại trang
+
+        const link = document.getElementById('link').value;
+
+        // Gửi yêu cầu tới PHP để xử lý chuyển đổi link
+        fetch('convert.php?link=' + encodeURIComponent(link))
+            .then(response => response.text())
+            .then(data => {
+                // Hiển thị link đã chuyển đổi và tạo nút sao chép
+                document.getElementById('convertedLink').innerHTML = `
+                    <input type="text" value="${data}" id="resultLink" readonly>
+                    <button onclick="copyToClipboard()">Copy Link</button>
+                    <span id="copyMessage" style="display: none; color: green;">Link đã được sao chép!</span>
+                `;
+            });
+    }
+
+    // Hàm sao chép link
+    function copyToClipboard() {
+        const resultLink = document.getElementById('resultLink');
+        resultLink.select();
+        document.execCommand("copy");
+
+        // Hiển thị thông báo
+        const message = document.getElementById("copyMessage");
+        message.style.display = "inline";
+
+        // Ẩn thông báo sau 2 giây
+        setTimeout(() => {
+            message.style.display = "none";
+        }, 2000);
+    }
+    </script>
 </body>
 </html>
