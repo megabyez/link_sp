@@ -1,6 +1,6 @@
 <?php
 // Mã affiliate của bạn
-$aff_code = '17396870089';
+$aff_code = '17396870089'; // Mã affiliate
 
 // Kiểm tra xem có đoạn văn bản nào được gửi tới không
 if (isset($_POST['text'])) {
