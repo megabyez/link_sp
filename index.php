@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi link affiliate</title>
-    <link rel="stylesheet" href="style.css"> <!-- Nếu có file CSS -->
+    <link rel="stylesheet" href="style.css"> <!-- Liên kết tới file CSS nếu có -->
     <style>
         .copy-btn {
             margin-left: 10px;
@@ -18,6 +18,15 @@
         .copy-btn:active {
             background-color: #45a049;
         }
+        #copyAllBtn {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -30,7 +39,10 @@
         <button type="submit">Chuyển đổi</button>
     </form>
 
-    <!-- Vùng hiển thị kết quả chuyển đổi ngay bên dưới form -->
+    <!-- Nút để copy tất cả -->
+    <button id="copyAllBtn" onclick="copyAllText()" style="display: none;">Copy tất cả</button>
+
+    <!-- Vùng hiển thị kết quả chuyển đổi -->
     <div id="result"></div>
 
     <script>
@@ -45,33 +57,23 @@
                     // Hiển thị kết quả trong div #result
                     document.getElementById("result").innerHTML = xhr.responseText;
 
-                    // Thêm sự kiện copy vào nút (nếu cần)
-                    addCopyEventListeners();
+                    // Hiển thị nút Copy tất cả khi có kết quả
+                    document.getElementById("copyAllBtn").style.display = "block";
                 }
             };
             xhr.send("text=" + encodeURIComponent(text)); // Gửi dữ liệu
         }
 
-        // Hàm thêm sự kiện copy cho các link
-        function addCopyEventListeners() {
-            const copyButtons = document.querySelectorAll(".copy-btn");
-            copyButtons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const link = this.previousElementSibling.textContent;
-                    copyToClipboard(link);
-                    alert("Đã copy: " + link);
-                });
-            });
-        }
-
-        // Hàm sao chép link vào clipboard
-        function copyToClipboard(text) {
+        // Hàm sao chép toàn bộ kết quả vào clipboard
+        function copyAllText() {
+            const result = document.getElementById("result").innerText;
             const textarea = document.createElement("textarea");
-            textarea.value = text;
+            textarea.value = result;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand("copy");
             document.body.removeChild(textarea);
+            alert("Đã copy");
         }
     </script>
 </body>
