@@ -5,8 +5,9 @@ textarea {
     margin: 15px 0;
     border: 2px solid #ccc;
     border-radius: 8px;
-    font-size: 18px;  /* Tăng cỡ chữ để dễ nhìn */
+    font-size: 18px;
     resize: none;  /* Không cho phép người dùng thay đổi kích thước */
+    height: 150px;  /* Tăng chiều cao lên 150px hoặc giá trị lớn hơn */
 }
 
 /* Các thuộc tính khác vẫn giữ nguyên */
